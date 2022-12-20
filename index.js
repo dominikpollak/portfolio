@@ -1,6 +1,7 @@
 const carousel = document.getElementById('carousel')
+const counterWrapper = document.getElementById('counter-wrapper')
 const counter = document.getElementById('counter')
-const counterNum = document.getElementById('counterNum')
+const counterNum = document.getElementsByClassName('counterNum')
 const heading = document.getElementById('heading')
 const images = document.querySelectorAll('.image')
 const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -8,22 +9,31 @@ const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
 window.onload = function () {
 
-    carousel.classList.add('show')
+    carousel.animate({
+        transform: `translateY(-45%)`,
+        left : '42%',
+    }, { duration: 2500, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
 
-    counter.style.color = 'white'
+    counterWrapper.style.color = 'white'
+    for (const num of counterNum) {
+        num.style.color = 'white'
+    }
 
     heading.style.color = 'white'
 }
 
+
 for (const img of images) {
     img.addEventListener('click', () => {
 
-        // carousel.classList.remove('show')
         for (const img of images) {
             img.classList.add('minimized')
         }
         carousel.classList.add('minimized')
-        counter.style.color = 'transparent'
+        counterWrapper.style.color = 'transparent'
+        for (const num of counterNum) {
+            num.style.color = 'transparent'
+        }
 
         img.classList.add('maximized')
 
@@ -38,8 +48,11 @@ window.onmousemove = e => {
     if ((parseFloat(carousel.dataset.mouseDownAt) - e.clientX) !== 0) {
 
         carousel.classList.remove('minimized')
-        carousel.classList.add('show')
-        counter.style.color = 'white'
+        counterWrapper.style.color = 'white'
+
+        for (const num of counterNum) {
+            num.style.color = 'white'
+        }
 
         for (const img of images) {
             img.classList.remove('maximized')
@@ -54,13 +67,13 @@ window.onmousemove = e => {
     let percentage = (mouseDelta / maxDelta) * -100,
         nextPercentage = parseFloat(carousel.dataset.prevPercentage) + percentage;
 
-        if (nextPercentage >= 0) nextPercentage = 0
-        if (nextPercentage <= -96.5) nextPercentage = -96.6
-    
-            counter.animate({
-                transform: `translateY(${nextPercentage * 0.994813278}%)`
-            }, { duration: 400, delay: 200, fill: 'forwards' })
-        
+    if (nextPercentage >= 0) nextPercentage = 0
+    if (nextPercentage <= -96.5) nextPercentage = -96.6
+
+    counter.animate({
+        transform: `translateY(${nextPercentage * 0.99377593361}%)`
+    }, { duration: 900, delay: 300, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
+
 
     carousel.dataset.percentage = nextPercentage
 
@@ -80,8 +93,10 @@ window.onmousemove = e => {
 window.addEventListener('wheel', (e) => {
 
     carousel.classList.remove('minimized')
-    carousel.classList.add('show')
-    counter.style.color = 'white'
+    counterWrapper.style.color = 'white'
+    for (const num of counterNum) {
+        num.style.color = 'white'
+    }
 
     for (const img of images) {
         img.classList.remove('maximized')
@@ -92,25 +107,25 @@ window.addEventListener('wheel', (e) => {
     let value = prevValue
 
     if (e.deltaY > 0) {
-        value += 0.25
+        value += 0.2
     }
     else {
-        value -= 0.25
+        value -= 0.2
     }
 
     if (value >= 0) value = 0
     if (value <= -96.6) value = -96.6
 
-        counter.animate({
-            transform: `translateY(${value * 0.994813278}%)`
-        }, { duration: 400, delay: 200, fill: 'forwards' })
-    
+    counter.animate({
+        transform: `translateY(${value * 0.99377593361}%)`
+    }, { duration: 800, delay: 200, fill: 'forwards', easing: "cubic-bezier(0.1, 0, 1, 1)" })
+
 
     carousel.dataset.prevPercentage = value;
 
     carousel.animate({
         transform: `translate(${value}%, -45%)`
-    }, { duration: 900, fill: 'forwards' })
+    }, { duration: 2200, fill: 'forwards', easing: "cubic-bezier(0.1, 0, 1, 1)" })
 
     for (const img of carousel.getElementsByClassName("image")) {
         img.animate({
