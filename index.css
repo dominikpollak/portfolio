@@ -37,8 +37,8 @@ body {
     height: 100vh;
     width: 100vw;
     z-index: 1;
-    background-color: rgb(24, 24, 24);
-    /* background-color: black; */
+    /* background-color: rgb(24, 24, 24); */
+    background-color: black;
 }
 #blocker2{
     position: absolute;
@@ -46,53 +46,68 @@ body {
     width: 100vw;
     height: 2.1em;
     z-index: 1;
-    background-color: rgb(24, 24, 24);
-    /* background-color: black; */
+    /* background-color: rgb(24, 24, 24); */
+    background-color: black;
+}
+#counter-wrapper{
+    position: absolute;
+    height: 1.3em;
+    width: 6%;
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 3em;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    font-size: 1.3em;
+    font-family: 'Chivo Mono', monospace;
 }
 
 #counter{
     margin: 0;
     position: absolute;
-    width: 100%;
-    bottom: 3em;
-    color: transparent;
-    text-align: center;
-    font-size: 1.3em;
-    font-family: 'Chivo Mono', monospace;
-    transition: 0.3s;
+    left: 0;
+    /*color: transparent;
+    */transition: 0.3s;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
     -ms-transition: 0.3s;
     -o-transition: 0.3s;
-    transform: translateY(100.2%);
-    -webkit-transform: translateY(100.2%);
-    -moz-transform: translateY(100.2%);
-    -ms-transform: translateY(100.2%);
-    -o-transform: translateY(100.2%);
-    z-index: -1;
+    transform: translateY(-96%) ;
+    /*z-index: -1;
+    */
+    -webkit-transform: translateY(-96%) ;
+    -moz-transform: translateY(-96%) ;
+    -ms-transform: translateY(-96%) ;
+    -o-transform: translateY(-96%) ;
+    -webkit-transform: translateY(-96%) ;
 }
 
-.counter-wrapper{
-    display: inline;
+#dash{
+    position: absolute;
+    left: 50%;
+    /* text-align: center; */
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
 }
-
 #counter2{
     position: absolute;
-    bottom: 3em;
-    color: white;
-    left: 51.2%;
-    font-size: 1.3em;
-    font-family: 'Chivo Mono', monospace;
+    margin: 0;
+    top: 0;
+    right: 0;
     transition: 0.2s;
     -webkit-transition: 0.2s;
     -moz-transition: 0.2s;
     -ms-transition: 0.2s;
     -o-transition: 0.2s;
-    transform: translateY(100%);
-    -webkit-transform: translateY(100%);
-    -moz-transform: translateY(100%);
-    -ms-transform: translateY(100%);
-    -o-transform: translateY(100%);
     z-index: -1;
 }
 
@@ -102,12 +117,6 @@ body {
     to { transform:translateY(100%) ; -webkit-transform:translateY(100%) ; -moz-transform:translateY(100%) ; -ms-transform:translateY(100%) ; -o-transform:translateY(100%) ; } */
 }
 
-#counterNum{
-    /*animation-name: numRoll;
-    *//*animation-duration: 1s;
-    */
- 
-}
 
 .image {
     width: 280px;

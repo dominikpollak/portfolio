@@ -54,38 +54,13 @@ window.onmousemove = e => {
     let percentage = (mouseDelta / maxDelta) * -100,
         nextPercentage = parseFloat(carousel.dataset.prevPercentage) + percentage;
 
-    if (nextPercentage <= -96.4){
-        nextPercentage = -96.4
-    }
-
-    else if (nextPercentage >= 0.2) {
-        nextPercentage = 0
-        // counter.style.transform =  `translateY(${100.2 + nextPercentage}%)`
-    }
-
-    else{
-        counter.animate({
-            transform: `translateY(${100.2 + nextPercentage}%)`
-        }, { duration: 400, delay: 200, fill: 'forwards' })
+        if (nextPercentage >= 0) nextPercentage = 0
+        if (nextPercentage <= -96.5) nextPercentage = -96.6
     
-    }
-    console.log(nextPercentage)
-   
-
-    // counter.style.transform = `scale(${((nextPercentage * -1) / 130) + 1.1})`
-
-   
-
-    // if (nextPercentage < -94.5) counterNum.textContent = 25
-
-    // else if (nextPercentage < -50) {
-    //     counterNum.textContent = `${Math.floor((nextPercentage * -1) / 3.93) + 1}`
-    // }
-    // else {
-    //     counterNum.textContent = `${Math.floor((nextPercentage * -1) / 3.856) + 1}`
-
-    // }
-
+            counter.animate({
+                transform: `translateY(${nextPercentage * 0.994813278}%)`
+            }, { duration: 400, delay: 200, fill: 'forwards' })
+        
 
     carousel.dataset.percentage = nextPercentage
 
@@ -124,36 +99,12 @@ window.addEventListener('wheel', (e) => {
     }
 
     if (value >= 0) value = 0
-    if (value <= -96.4) value = -96.4
+    if (value <= -96.6) value = -96.6
 
-    if (value >= 0.2) {
-        value = 0
-        // counter.style.transform =  `translateY(${100.2 + value}%)`
-    }
-
-    console.log('value',value)
-    if(value <= -96.35){
-        counter.style.transform =  'translateY(13.8)%'
-    }
-
-    else{
         counter.animate({
-            transform: `translateY(${100.2 + value}%)`
+            transform: `translateY(${value * 0.994813278}%)`
         }, { duration: 400, delay: 200, fill: 'forwards' })
     
-    }
-
-    // if (value < -94.5) counterNum.textContent = 25
-
-    // else if (value < -50) {
-    //     counterNum.textContent = `${Math.floor((value * -1) / 3.93) + 1}`
-    // }
-    // else {
-    //     counterNum.textContent = `${Math.floor((value * -1) / 3.856) + 1}`
-
-    // }
-
-    // counter.style.transform = `scale(${((value * -1) / 130) + 1.1})`
 
     carousel.dataset.prevPercentage = value;
 
