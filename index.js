@@ -9,9 +9,14 @@ const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
 window.onload = function () {
 
+    counter.animate({
+        transform: `translateY(0%)`,
+    }, { duration: 2500, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
+
+
     carousel.animate({
         transform: `translateY(-45%)`,
-        left : '42%',
+        left: '42%',
     }, { duration: 2500, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
 
     counterWrapper.style.color = 'white'
@@ -19,26 +24,8 @@ window.onload = function () {
         num.style.color = 'white'
     }
 
-    heading.style.color = 'white'
-}
-
-
-for (const img of images) {
-    img.addEventListener('click', () => {
-
-        for (const img of images) {
-            img.classList.add('minimized')
-        }
-        carousel.classList.add('minimized')
-        counterWrapper.style.color = 'transparent'
-        for (const num of counterNum) {
-            num.style.color = 'transparent'
-        }
-
-        img.classList.add('maximized')
-
-    })
-
+    heading.animate({color: 'white'}, {duration: 4000, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)"})
+    // heading.style.color = 'white'
 }
 
 window.onmousemove = e => {
@@ -62,7 +49,7 @@ window.onmousemove = e => {
     }
 
     const mouseDelta = parseFloat(carousel.dataset.mouseDownAt) - e.clientX,
-        maxDelta = window.innerWidth
+        maxDelta = window.innerWidth / 0.7
 
     let percentage = (mouseDelta / maxDelta) * -100,
         nextPercentage = parseFloat(carousel.dataset.prevPercentage) + percentage;
@@ -70,16 +57,22 @@ window.onmousemove = e => {
     if (nextPercentage >= 0) nextPercentage = 0
     if (nextPercentage <= -96.5) nextPercentage = -96.6
 
-    counter.animate({
-        transform: `translateY(${nextPercentage * 0.99377593361}%)`
-    }, { duration: 900, delay: 300, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
+    //number counter logic
+    for (let i = 0; i < counterNum.length; i++) {
 
+        if ((nextPercentage - 1.8) * -1 < 4.025 + i * 4.025) {
+            counter.animate({
+                transform: `translateY(${-24.51 * i}px)`
+            }, { duration: 1300, delay: 400, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" });
+            break;
+        }
+    }
 
     carousel.dataset.percentage = nextPercentage
 
     carousel.animate({
         transform: `translate(${nextPercentage}%, -45%)`
-    }, { duration: 2200, fill: 'forwards' })
+    }, { duration: 2200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
     for (const img of carousel.getElementsByClassName("image")) {
         img.animate({
@@ -114,18 +107,25 @@ window.addEventListener('wheel', (e) => {
     }
 
     if (value >= 0) value = 0
-    if (value <= -96.6) value = -96.6
+    if (value <= -96.5) value = -96.6
 
-    counter.animate({
-        transform: `translateY(${value * 0.99377593361}%)`
-    }, { duration: 800, delay: 200, fill: 'forwards', easing: "cubic-bezier(0.1, 0, 1, 1)" })
+    //number counter logic
+    for (let i = 0; i < counterNum.length; i++) {
+
+        if ((value - 1.8) * -1 < 4.025 + i * 4.025) {
+            counter.animate({
+                transform: `translateY(${-24.51 * i}px)`
+            }, { duration: 1300, delay: 400, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" });
+            break;
+        }
+    }
 
 
     carousel.dataset.prevPercentage = value;
 
     carousel.animate({
         transform: `translate(${value}%, -45%)`
-    }, { duration: 2200, fill: 'forwards', easing: "cubic-bezier(0.1, 0, 1, 1)" })
+    }, { duration: 2200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
     for (const img of carousel.getElementsByClassName("image")) {
         img.animate({
@@ -140,7 +140,68 @@ window.onmousedown = e => {
     carousel.dataset.mouseDownAt = e.clientX;
 }
 
-window.onmouseup = () => {
-    carousel.dataset.mouseDownAt = '0'
-    carousel.dataset.prevPercentage = carousel.dataset.percentage
+if (parseFloat(carousel.dataset.mouseDownAt) == 0) {
+
+    for (let i = 0; i < images.length; i ++) {
+        images[i].addEventListener('click', () => {
+
+            for(const image of images){
+                image.classList.remove('maximized')
+            }
+            
+            counterWrapper.style.color = 'transparent'
+            for (const num of counterNum) {
+                num.style.color = 'transparent'
+            }
+
+            // if(i > 12){
+            //     carousel.animate({
+            //         transform: `translate(${-3.71984435798 * (i+1)}%, -45%)`
+            //     }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+            
+            //     carousel.dataset.prevPercentage = -3.71984435798 * (i+1)
+                
+            // }
+            // else{
+                carousel.animate({
+                    transform: `translate(${-304.92 * (i+1.25)}px, -45%)`
+                }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+            
+                carousel.dataset.prevPercentage = -3.8 * (i+1)
+                
+            // }
+           
+            images[i].classList.add('maximized')
+    
+
+        });
+
+    }
 }
+
+window.onmouseup = e => {
+
+    // if (parseFloat(carousel.dataset.mouseDownAt) !== 0) {
+
+    //     for (const img of images) {
+    //         img.addEventListener('click', () => {
+
+    //             for(const image of images){
+    //                 image.classList.remove('maximized')
+    //             }
+                
+    //             counterWrapper.style.color = 'transparent'
+    //             for (const num of counterNum) {
+    //                 num.style.color = 'transparent'
+    //             }
+
+    //             img.classList.add('maximized')
+
+    //         });
+    //     }
+    // }
+
+    carousel.dataset.mouseDownAt = '0';
+    carousel.dataset.prevPercentage = carousel.dataset.percentage;
+
+};

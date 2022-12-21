@@ -16,25 +16,19 @@ body {
     width: 100%;
     text-align: center;
     color: transparent;
-    transition: 4s;
-    transition: ease-out;
-    -webkit-transition: 4s;
-    -moz-transition: 4s;
-    -ms-transition: 4s;
-    -o-transition: 4s;
-    z-index: 2;
+    z-index: -1;
 }
 
 #heading h1 {
     letter-spacing: 15px;
     font-size: 3em;
-    z-index: 2;
+    z-index: -1;
 }
 
 #counter-wrapper{
     position: absolute;
     height: 1.3em;
-    width: 6%;
+    width: 90px;
     color: transparent;
     margin: 0;
     padding: 0;
@@ -50,16 +44,16 @@ body {
     font-family: 'Chivo Mono', monospace;
 }
 
-.counterNum{
-    /* transition-delay: 2s;
-    transition-duration: 2s; */
-}
-
 #counter{
     margin: 0;
     position: absolute;
+    top: 0;
     left: 0;
- 
+    transform: translateY(-612.5px);
+    -webkit-transform: translateY(-612.5px);
+    -moz-transform: translateY(-612.5px);
+    -ms-transform: translateY(-612.5px);
+    -o-transform: translateY(-612.5px);
 }
 
 #dash{
@@ -85,25 +79,34 @@ body {
     height: clamp(36vmin, 46vmin, 56vmin);
     object-fit: cover;
     object-position: 100% center;
-    transition-duration: 1s;
-    /* border: 1px white solid; */
+    transition-duration: 1.2s;
+    z-index: 2;
 }
 
 .image.maximized {
-    height: 1000px;
-    width: 1000px;
+    transition-duration: 1s;
+    transition: ease-out;
+    /*position: relative;
+    justify-content: center;
+    align-items: center;
+    */height: auto;
+    width: 1025px;
+    /*right: auto;
+    */object-fit: contain;
+    /*left: 50%;
+    *//*transform: translateX(-50%);
+    */z-index: 4;
+    /*-webkit-transform: translateX(-50%);
+    *//*-moz-transform: translateX(-50%);
+    *//*-ms-transform: translateX(-50%);
+    *//*-o-transform: translateX(-50%);
+    */
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
 }
 
-.image.minimized {
-    height: 70px;
-    width: 40px;
-    transition-duration: 1s;
-    border: none;
-    left: 43%;
-    right: 57%;
-    top: auto;
-    bottom: 0;
-}
 
 .image:hover {
     filter: brightness(50%);
@@ -115,11 +118,11 @@ body {
    display: flex;
    position: absolute;
    gap: 3vmin;
-   top: 55%;
+   top: 50%;
    left: -450%;
 }
 
-#carousel.minimized{
+/* #carousel.minimized{
     gap: 3px;
     position: absolute;
     left: 50%;
@@ -131,4 +134,4 @@ body {
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
-}
+} */
