@@ -24,7 +24,7 @@ window.onload = function () {
         num.style.color = 'white'
     }
 
-    heading.animate({color: 'white'}, {duration: 4000, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)"})
+    heading.animate({ color: 'white' }, { duration: 4000, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
     // heading.style.color = 'white'
 }
 
@@ -82,8 +82,10 @@ window.onmousemove = e => {
     }
 }
 
-
+//pomaly scroll na kolecku 
 window.addEventListener('wheel', (e) => {
+
+    let isTrackpad = false
 
     carousel.classList.remove('minimized')
     counterWrapper.style.color = 'white'
@@ -99,11 +101,19 @@ window.addEventListener('wheel', (e) => {
     let prevValue = parseFloat(carousel.dataset.prevPercentage)
     let value = prevValue
 
-    if (e.deltaY > 0) {
-        value += 0.2
+    console.log(e.deltaY)
+
+    if (e.deltaY > 2 && e.deltaY < 119) { 
+        value += 0.3 
     }
-    else {
-        value -= 0.2
+    else if (e.deltaY < -2 && e.deltaY > -119) {
+        value -= 0.3
+    }
+    else if (e.deltaY > 119){
+        value += 10
+    }
+    else if (e.deltaY < -119){
+        value -+ 10
     }
 
     if (value >= 0) value = 0
@@ -142,37 +152,33 @@ window.onmousedown = e => {
 
 if (parseFloat(carousel.dataset.mouseDownAt) == 0) {
 
-    for (let i = 0; i < images.length; i ++) {
+    for (let i = 0; i < images.length; i++) {
         images[i].addEventListener('click', () => {
 
-            for(const image of images){
+            for (const image of images) {
                 image.classList.remove('maximized')
+
+                image.animate({
+                    objectPosition: `${(-3.8 * (i + 1))+100}% 50%`
+                }, { duration: 900, fill: 'forwards' })
+        
             }
-            
+
             counterWrapper.style.color = 'transparent'
             for (const num of counterNum) {
                 num.style.color = 'transparent'
             }
 
-            // if(i > 12){
-            //     carousel.animate({
-            //         transform: `translate(${-3.71984435798 * (i+1)}%, -45%)`
-            //     }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
-            
-            //     carousel.dataset.prevPercentage = -3.71984435798 * (i+1)
-                
+            carousel.animate({
+                transform: `translate(${-304.92 * (i + 1.25)}px, -45%)`
+            }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+
+            carousel.dataset.prevPercentage = -3.8 * (i + 1)
+
             // }
-            // else{
-                carousel.animate({
-                    transform: `translate(${-304.92 * (i+1.25)}px, -45%)`
-                }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
-            
-                carousel.dataset.prevPercentage = -3.8 * (i+1)
-                
-            // }
-           
+
             images[i].classList.add('maximized')
-    
+
 
         });
 
@@ -189,7 +195,7 @@ window.onmouseup = e => {
     //             for(const image of images){
     //                 image.classList.remove('maximized')
     //             }
-                
+
     //             counterWrapper.style.color = 'transparent'
     //             for (const num of counterNum) {
     //                 num.style.color = 'transparent'

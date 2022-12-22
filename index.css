@@ -45,6 +45,7 @@ body {
 }
 
 #counter{
+    padding: 0;
     margin: 0;
     position: absolute;
     top: 0;
@@ -86,25 +87,26 @@ body {
 .image.maximized {
     transition-duration: 1s;
     transition: ease-out;
-    /*position: relative;
-    justify-content: center;
-    align-items: center;
-    */height: auto;
-    width: 1025px;
-    /*right: auto;
-    */object-fit: contain;
-    /*left: 50%;
-    *//*transform: translateX(-50%);
-    */z-index: 4;
-    /*-webkit-transform: translateX(-50%);
-    *//*-moz-transform: translateX(-50%);
-    *//*-ms-transform: translateX(-50%);
-    *//*-o-transform: translateX(-50%);
-    */
+   height: auto;
+    width: 1015px;
+    object-fit: contain;
+    z-index: 4;
     -webkit-transition: 1s;
     -moz-transition: 1s;
     -ms-transition: 1s;
     -o-transition: 1s;
+}
+#img-label{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    width: 200px;
+    height: 80px;
+    background-color: black;
 }
 
 
@@ -112,6 +114,10 @@ body {
     filter: brightness(50%);
     -webkit-filter: brightness(50%);
     cursor: pointer;
+}
+.image.maximized:hover{
+    filter: brightness(100%);
+    -webkit-filter: brightness(100%);
 }
 
 #carousel {
