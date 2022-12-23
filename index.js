@@ -5,6 +5,7 @@ const counterNum = document.getElementsByClassName('counterNum')
 const heading = document.getElementById('heading')
 const images = document.querySelectorAll('.image')
 const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+const label = document.getElementById('img-label')
 
 
 window.onload = function () {
@@ -34,6 +35,9 @@ window.onmousemove = e => {
 
     if ((parseFloat(carousel.dataset.mouseDownAt) - e.clientX) !== 0) {
 
+        // label.style.display = 'none'
+        label.classList.remove('active')
+        heading.style.display = 'block'
         carousel.classList.remove('minimized')
         counterWrapper.style.color = 'white'
 
@@ -46,7 +50,7 @@ window.onmousemove = e => {
             img.classList.remove('minimized')
         }
 
-    }
+    }   
 
     const mouseDelta = parseFloat(carousel.dataset.mouseDownAt) - e.clientX,
         maxDelta = window.innerWidth / 0.7
@@ -86,9 +90,12 @@ window.onmousemove = e => {
 window.addEventListener('wheel', (e) => {
 
     let isTrackpad = false
-
+    heading.style.display = 'block'
+    label.classList.remove('active')
+    // label.style.display = 'none'
     carousel.classList.remove('minimized')
     counterWrapper.style.color = 'white'
+
     for (const num of counterNum) {
         num.style.color = 'white'
     }
@@ -164,6 +171,9 @@ if (parseFloat(carousel.dataset.mouseDownAt) == 0) {
         
             }
 
+            label.innerText = images[i].dataset.label
+            label.classList.add('active')
+            heading.style.display = 'none'
             counterWrapper.style.color = 'transparent'
             for (const num of counterNum) {
                 num.style.color = 'transparent'
