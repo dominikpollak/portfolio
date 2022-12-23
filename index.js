@@ -6,6 +6,9 @@ const heading = document.getElementById('heading')
 const images = document.querySelectorAll('.image')
 const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 const label = document.getElementById('img-label')
+const arrowRight = document.getElementById('arrow-right')
+const arrowLeft = document.getElementById('arrow-left')
+const arrows = document.getElementById('arrows')
 
 
 window.onload = function () {
@@ -26,7 +29,9 @@ window.onload = function () {
     }
 
     heading.animate({ color: 'white' }, { duration: 4000, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
-    // heading.style.color = 'white'
+    heading.classList.add('active')
+    arrows.classList.add('active')
+
 }
 
 window.onmousemove = e => {
@@ -35,9 +40,12 @@ window.onmousemove = e => {
 
     if ((parseFloat(carousel.dataset.mouseDownAt) - e.clientX) !== 0) {
 
-        // label.style.display = 'none'
+        label.innerText = ''
         label.classList.remove('active')
-        heading.style.display = 'block'
+
+        heading.classList.add('active')
+        arrows.classList.add('active')
+        heading.style.color = 'white'
         carousel.classList.remove('minimized')
         counterWrapper.style.color = 'white'
 
@@ -50,7 +58,7 @@ window.onmousemove = e => {
             img.classList.remove('minimized')
         }
 
-    }   
+    }
 
     const mouseDelta = parseFloat(carousel.dataset.mouseDownAt) - e.clientX,
         maxDelta = window.innerWidth / 0.7
@@ -58,8 +66,29 @@ window.onmousemove = e => {
     let percentage = (mouseDelta / maxDelta) * -100,
         nextPercentage = parseFloat(carousel.dataset.prevPercentage) + percentage;
 
-    if (nextPercentage >= 0) nextPercentage = 0
-    if (nextPercentage <= -96.5) nextPercentage = -96.6
+    if (nextPercentage >= 0) {
+        nextPercentage = 0
+        arrowLeft.animate({
+            transform: 'scale(0)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+    else {
+        arrowLeft.animate({
+            transform: 'scale(1)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+
+    if (nextPercentage <= -96.5) {
+        nextPercentage = -96.6
+        arrowRight.animate({
+            transform: 'scale(0)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+    else {
+        arrowRight.animate({
+            transform: 'scale(1)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
 
     //number counter logic
     for (let i = 0; i < counterNum.length; i++) {
@@ -89,10 +118,14 @@ window.onmousemove = e => {
 //pomaly scroll na kolecku 
 window.addEventListener('wheel', (e) => {
 
-    let isTrackpad = false
-    heading.style.display = 'block'
+    // let isTrackpad = false
+    heading.classList.add('active')
+    arrows.classList.add('active')
+    // setTimeout(() => {
+    //     label.innerText = ''
+    // },300)
+    label.innerText = ''
     label.classList.remove('active')
-    // label.style.display = 'none'
     carousel.classList.remove('minimized')
     counterWrapper.style.color = 'white'
 
@@ -110,21 +143,42 @@ window.addEventListener('wheel', (e) => {
 
     console.log(e.deltaY)
 
-    if (e.deltaY > 2 && e.deltaY < 119) { 
-        value += 0.3 
+    if (e.deltaY > 2 && e.deltaY < 119) {
+        value += 0.3
     }
     else if (e.deltaY < -2 && e.deltaY > -119) {
         value -= 0.3
     }
-    else if (e.deltaY > 119){
+    else if (e.deltaY > 119) {
         value += 10
     }
-    else if (e.deltaY < -119){
-        value -+ 10
+    else if (e.deltaY < -119) {
+        value - + 10
     }
 
-    if (value >= 0) value = 0
-    if (value <= -96.5) value = -96.6
+    if (value >= 0) {
+        value = 0
+        arrowLeft.animate({
+            transform: 'scale(0)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+    else {
+        arrowLeft.animate({
+            transform: 'scale(1)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+
+    if (value <= -96.5) {
+        value = -96.6
+        arrowRight.animate({
+            transform: 'scale(0)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+    else {
+        arrowRight.animate({
+            transform: 'scale(1)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
 
     //number counter logic
     for (let i = 0; i < counterNum.length; i++) {
@@ -166,14 +220,18 @@ if (parseFloat(carousel.dataset.mouseDownAt) == 0) {
                 image.classList.remove('maximized')
 
                 image.animate({
-                    objectPosition: `${(-3.8 * (i + 1))+100}% 50%`
+                    objectPosition: `${(-3.8 * (i + 1)) + 100}% 50%`
                 }, { duration: 900, fill: 'forwards' })
-        
+
             }
 
-            label.innerText = images[i].dataset.label
             label.classList.add('active')
-            heading.style.display = 'none'
+            setTimeout(() => {
+                label.innerText = images[i].dataset.label
+            }, 350)
+
+            arrows.classList.remove('active')
+            heading.classList.remove('active')
             counterWrapper.style.color = 'transparent'
             for (const num of counterNum) {
                 num.style.color = 'transparent'
@@ -196,26 +254,6 @@ if (parseFloat(carousel.dataset.mouseDownAt) == 0) {
 }
 
 window.onmouseup = e => {
-
-    // if (parseFloat(carousel.dataset.mouseDownAt) !== 0) {
-
-    //     for (const img of images) {
-    //         img.addEventListener('click', () => {
-
-    //             for(const image of images){
-    //                 image.classList.remove('maximized')
-    //             }
-
-    //             counterWrapper.style.color = 'transparent'
-    //             for (const num of counterNum) {
-    //                 num.style.color = 'transparent'
-    //             }
-
-    //             img.classList.add('maximized')
-
-    //         });
-    //     }
-    // }
 
     carousel.dataset.mouseDownAt = '0';
     carousel.dataset.prevPercentage = carousel.dataset.percentage;
