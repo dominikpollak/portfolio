@@ -32,6 +32,7 @@ window.onload = function () {
     heading.classList.add('active')
     subheading.classList.add('active')
     arrows.classList.add('active')
+    label.style.display = 'block'
 
     arrowLeft.animate({
         transform: 'scale(0)'
