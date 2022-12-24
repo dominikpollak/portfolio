@@ -15,8 +15,8 @@ body {
     position: relative;
     width: 100vw;
     justify-content: center;
-    margin-top: 0.7rem;
     width: 100%;
+    margin-top: 0.4rem;
     text-align: center;
     color: transparent;
     z-index: 5;
@@ -28,7 +28,7 @@ body {
 #heading.active {
     font-size: 3.5em;
     transition: font-size 0.9s ease-out;
-    margin-top: 3rem;
+    margin-top: 3.1rem;
     color: white;
     -webkit-transition: font-size 0.9s ease-out;
     -moz-transition: font-size 0.9s ease-out;
@@ -243,6 +243,11 @@ body {
     gap: 3vmin;
     top: 50%;
     left: -1000%;
+    transform: translateY(15%);
+    -webkit-transform: scale(0.1);
+    -moz-transform: scale(0.1);
+    -ms-transform: scale(0.1);
+    -o-transform: scale(0.1);
 }
 
 /* #carousel.minimized{

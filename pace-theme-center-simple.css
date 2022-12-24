@@ -13,11 +13,20 @@
   right: 0;
   bottom: 0;
   height: 5%;
-  width: 25%;
+  width: 200px;
   background: black;
   border: 1px solid white;
+  border-radius: 2px;
   overflow: hidden;
-
+  transform: scale(2);
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
 }
 
 .pace .pace-progress {

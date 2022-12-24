@@ -54,7 +54,6 @@ window.onmousemove = e => {
         heading.classList.add('active')
         subheading.classList.add('active')
         arrows.classList.add('active')
-        // heading.style.color = 'white'
         carousel.classList.remove('minimized')
         counterWrapper.style.color = 'white'
 
