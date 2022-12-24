@@ -11,9 +11,11 @@ const arrowLeft = document.getElementById('arrow-left')
 const arrows = document.getElementById('arrows')
 const label = document.querySelector('#img-label')
 
-
 window.onload = function () {
-
+    
+    // label.style.width = '0'
+    // label.style.height = '0'
+    
     counter.animate({
         transform: `translateY(0%)`,
     }, { duration: 2500, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
@@ -32,7 +34,9 @@ window.onload = function () {
     heading.classList.add('active')
     subheading.classList.add('active')
     arrows.classList.add('active')
-    label.style.display = 'block'
+
+    label.classList.add('ready')
+
 
     arrowLeft.animate({
         transform: 'scale(0)'
