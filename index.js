@@ -3,12 +3,13 @@ const counterWrapper = document.getElementById('counter-wrapper')
 const counter = document.getElementById('counter')
 const counterNum = document.getElementsByClassName('counterNum')
 const heading = document.getElementById('heading')
+const subheading = document.getElementById('subheading')
 const images = document.querySelectorAll('.image')
 const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-const label = document.getElementById('img-label')
 const arrowRight = document.getElementById('arrow-right')
 const arrowLeft = document.getElementById('arrow-left')
 const arrows = document.getElementById('arrows')
+const label = document.querySelector('#img-label')
 
 
 window.onload = function () {
@@ -28,8 +29,9 @@ window.onload = function () {
         num.style.color = 'white'
     }
 
-    heading.animate({ color: 'white' }, { duration: 4000, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
+    // heading.animate({ color: 'white' }, { duration: 4000, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
     heading.classList.add('active')
+    subheading.classList.add('active')
     arrows.classList.add('active')
 
 }
@@ -40,12 +42,13 @@ window.onmousemove = e => {
 
     if ((parseFloat(carousel.dataset.mouseDownAt) - e.clientX) !== 0) {
 
-        label.innerText = ''
+        label.innerHTML = '&nbsp;'
         label.classList.remove('active')
 
         heading.classList.add('active')
+        subheading.classList.add('active')
         arrows.classList.add('active')
-        heading.style.color = 'white'
+        // heading.style.color = 'white'
         carousel.classList.remove('minimized')
         counterWrapper.style.color = 'white'
 
@@ -120,11 +123,12 @@ window.addEventListener('wheel', (e) => {
 
     // let isTrackpad = false
     heading.classList.add('active')
+    subheading.classList.add('active')
     arrows.classList.add('active')
     // setTimeout(() => {
-    //     label.innerText = ''
+    //     label.innerText = 'o'
     // },300)
-    label.innerText = ''
+    label.innerHTML = '&nbsp;'
     label.classList.remove('active')
     carousel.classList.remove('minimized')
     counterWrapper.style.color = 'white'
@@ -143,18 +147,20 @@ window.addEventListener('wheel', (e) => {
 
     console.log(e.deltaY)
 
-    if (e.deltaY > 2 && e.deltaY < 119) {
-        value += 0.3
-    }
-    else if (e.deltaY < -2 && e.deltaY > -119) {
-        value -= 0.3
-    }
-    else if (e.deltaY > 119) {
-        value += 10
-    }
-    else if (e.deltaY < -119) {
-        value - + 10
-    }
+    value += e.deltaY/25 
+
+    // if (e.deltaY > 2 && e.deltaY < 119) {
+    //     value += e.deltaY/15
+    // }
+    // if (e.deltaY < -2 && e.deltaY > -119) {
+    //     value += e.deltaY/15
+    // }
+    // if (e.deltaY > 119) {
+    //     value += 10
+    // }
+    // if (e.deltaY < -119) {
+    //     value -+ 10
+    // }
 
     if (value >= 0) {
         value = 0
@@ -226,12 +232,14 @@ if (parseFloat(carousel.dataset.mouseDownAt) == 0) {
             }
 
             label.classList.add('active')
+
             setTimeout(() => {
                 label.innerText = images[i].dataset.label
-            }, 350)
+            }, 250)
 
             arrows.classList.remove('active')
             heading.classList.remove('active')
+            subheading.classList.remove('active')
             counterWrapper.style.color = 'transparent'
             for (const num of counterNum) {
                 num.style.color = 'transparent'
