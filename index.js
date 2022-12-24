@@ -29,10 +29,13 @@ window.onload = function () {
         num.style.color = 'white'
     }
 
-    // heading.animate({ color: 'white' }, { duration: 4000, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
     heading.classList.add('active')
     subheading.classList.add('active')
     arrows.classList.add('active')
+
+    arrowLeft.animate({
+        transform: 'scale(0)'
+    }, { duration: 1500, fill: 'forwards' })
 
 }
 
@@ -145,25 +148,15 @@ window.addEventListener('wheel', (e) => {
     let prevValue = parseFloat(carousel.dataset.prevPercentage)
     let value = prevValue
 
-    console.log(e.deltaY)
+    console.log(value)
 
-    value += e.deltaY/25 
-
-    // if (e.deltaY > 2 && e.deltaY < 119) {
-    //     value += e.deltaY/15
-    // }
-    // if (e.deltaY < -2 && e.deltaY > -119) {
-    //     value += e.deltaY/15
-    // }
-    // if (e.deltaY > 119) {
-    //     value += 10
-    // }
-    // if (e.deltaY < -119) {
-    //     value -+ 10
-    // }
+    value += e.deltaY / 25
 
     if (value >= 0) {
         value = 0
+    }
+
+    if (value > -1.5) {
         arrowLeft.animate({
             transform: 'scale(0)'
         }, { duration: 1500, fill: 'forwards' })
@@ -176,10 +169,14 @@ window.addEventListener('wheel', (e) => {
 
     if (value <= -96.5) {
         value = -96.6
+    }
+
+    else if (value <= -95) {
         arrowRight.animate({
             transform: 'scale(0)'
         }, { duration: 1500, fill: 'forwards' })
     }
+
     else {
         arrowRight.animate({
             transform: 'scale(1)'
@@ -249,12 +246,10 @@ if (parseFloat(carousel.dataset.mouseDownAt) == 0) {
                 transform: `translate(${-304.92 * (i + 1.25)}px, -45%)`
             }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
+            
             carousel.dataset.prevPercentage = -3.8 * (i + 1)
 
-            // }
-
             images[i].classList.add('maximized')
-
 
         });
 

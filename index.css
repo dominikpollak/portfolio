@@ -52,24 +52,21 @@ body {
 #heading #img-label{
     all: initial;
     color: transparent;
-    /*font-size: 1.5rem;
-    */position: relative;
-    /* letter-spacing: 0.15em; */
-    width: 18px;
+    position: relative;
+    /*letter-spacing: 0.15em;
+    */width: 18px;
     height: 24px;
     border: 3.6px solid white;
     border-radius: 46%;
     z-index: 5;
     transition: 0.8s;
-    -webkit-transition: 0.8s;
-    -moz-transition: 0.8s;
-    -ms-transition: 0.8s;
-    -o-transition: 0.8s;
     background: rgb(24, 24, 24);
+    /* background: white; */
     -webkit-border-radius: 46%;
     -moz-border-radius: 46%;
     -ms-border-radius: 46%;
     -o-border-radius: 46%;
+    
 }
 
 #heading #img-label.active {
@@ -84,14 +81,10 @@ body {
     transform: translateX(-50%);
     color: white;
     border-radius: 0;
-    transition: 0.8s;
+    /* transition: 0.8s; */
     width: 700px;
     height: 80px;
     border: 2px solid white;
-    -webkit-transition: 0.8s;
-    -moz-transition: 0.8s;
-    -ms-transition: 0.8s;
-    -o-transition: 0.8s;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
@@ -101,6 +94,12 @@ body {
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
+    transition-duration: 0.8s;
+    /* transition: ease-out;
+    -webkit-transition: ease-out;
+    -moz-transition: ease-out;
+    -ms-transition: ease-out;
+    -o-transition: ease-out; */
 }
 
 
