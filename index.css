@@ -58,7 +58,7 @@ body {
     border-radius: 46%;
     z-index: 5;
     transition: 0.8s;
-    background: rgb(24, 24, 24);
+    background: rgba(24, 24, 24, 0);
     /* background: white; */
     -webkit-border-radius: 46%;
     -moz-border-radius: 46%;

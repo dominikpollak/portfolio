@@ -81,24 +81,24 @@ window.onmousemove = e => {
         nextPercentage = 0
         arrowLeft.animate({
             transform: 'scale(0)'
-        }, { duration: 1500, fill: 'forwards' })
+        }, { duration: 1000, fill: 'forwards' })
     }
     else {
         arrowLeft.animate({
             transform: 'scale(1)'
-        }, { duration: 1500, fill: 'forwards' })
+        }, { duration: 1000, fill: 'forwards' })
     }
 
     if (nextPercentage <= -96.5) {
         nextPercentage = -96.6
         arrowRight.animate({
             transform: 'scale(0)'
-        }, { duration: 1500, fill: 'forwards' })
+        }, { duration: 1000, fill: 'forwards' })
     }
     else {
         arrowRight.animate({
             transform: 'scale(1)'
-        }, { duration: 1500, fill: 'forwards' })
+        }, { duration: 1000, fill: 'forwards' })
     }
 
     //number counter logic
