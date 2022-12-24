@@ -12,10 +12,7 @@ const arrows = document.getElementById('arrows')
 const label = document.querySelector('#img-label')
 
 window.onload = function () {
-    
-    // label.style.width = '0'
-    // label.style.height = '0'
-    
+   
     counter.animate({
         transform: `translateY(0%)`,
     }, { duration: 2500, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
@@ -32,6 +29,7 @@ window.onload = function () {
     }
 
     heading.classList.add('active')
+
     subheading.classList.add('active')
     arrows.classList.add('active')
 
@@ -133,9 +131,6 @@ window.addEventListener('wheel', (e) => {
     heading.classList.add('active')
     subheading.classList.add('active')
     arrows.classList.add('active')
-    // setTimeout(() => {
-    //     label.innerText = 'o'
-    // },300)
     label.innerHTML = '&nbsp;'
     label.classList.remove('active')
     carousel.classList.remove('minimized')
@@ -237,7 +232,7 @@ if (parseFloat(carousel.dataset.mouseDownAt) == 0) {
 
             setTimeout(() => {
                 label.innerText = images[i].dataset.label
-            }, 250)
+            }, 400)
 
             arrows.classList.remove('active')
             heading.classList.remove('active')
