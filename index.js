@@ -40,20 +40,21 @@ const maximizeImage = () => {
             heading.classList.remove('active')
             subheading.classList.remove('active')
             counterWrapper.style.color = 'transparent'
+            
             for (const num of counterNum) {
                 num.style.color = 'transparent'
             }
+
+            carousel.dataset.percentage = -3.8 * (i + 1)
 
             carousel.animate({
                 transform: `translate(${-304.92 * (i + 1.25)}px, -45%)`
             }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
-
-            carousel.dataset.prevPercentage = -3.8 * (i + 1)
-
             images[i].classList.add('maximized')
-            // mouseMoved = false
+
         });
+
     }
 }
 
@@ -155,7 +156,7 @@ window.onmousemove = e => {
 
     carousel.animate({
         transform: `translate(${nextPercentage}%, -45%)`
-    }, { duration: 2200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+    }, { duration: 3000, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
     for (const img of images) {
         img.classList.remove('maximized')
@@ -193,7 +194,7 @@ window.addEventListener('wheel', (e) => {
     let prevValue = parseFloat(carousel.dataset.prevPercentage)
     let value = prevValue
 
-    value += e.deltaY / 25
+    value += e.deltaY / 30 
 
 
     if (value >= 0) {
@@ -239,7 +240,7 @@ window.addEventListener('wheel', (e) => {
 
     carousel.animate({
         transform: `translate(${value}%, -45%)`
-    }, { duration: 2200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+    }, { duration: 3000, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
     for (const img of carousel.getElementsByClassName("image")) {
         img.animate({

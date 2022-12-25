@@ -210,7 +210,6 @@ body {
     transition-duration: 1s;
     transition: ease-out;
     height: auto;
-    /* width: clamp(1015px, 1050px, 1200px); */
     width: 70vw;
     object-fit: contain;
     z-index: 4;
