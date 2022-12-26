@@ -253,19 +253,28 @@ if (!mouseMoved) {
             //this happens when image gets minimalized with a click
             if (!images[i].classList.contains('maximized')) {
 
-                minimizedImages()
+                if (i <= 23) {
+                    carousel.dataset.percentage = (((imageWidth + 24) * (i + 1.7)) * -1) / 78.876811594203
 
-                carousel.dataset.percentage = (((imageWidth + 24) * (i + 0.7)) * -1) / 78.876811594203
+                    setTimeout(() => {
+                        label.innerText = images[i + 1].dataset.label
+                    }, 450)
 
-                counter.animate({
-                    transform: `translateY(${-24.51 * i}px)`
-                }, { duration: 400, delay: 200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" });
+                    carousel.animate({
+                        transform: `translate(${((imageWidth + 24) * (i + 2.25)) * -1}px, -45%)`
+                    }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
-                carousel.animate({
-                    transform: `translate(${((imageWidth + 24) * (i)) * -1}px, -45%)`
-                }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+                    images[i + 1].classList.add('maximized')
+                }
 
+                else{
+                    carousel.dataset.percentage = (((imageWidth + 24) * (i + 0.7)) * -1) / 78.876811594203
 
+                    carousel.animate({
+                        transform: `translate(${((imageWidth + 24) * (i)) * -1}px, -45%)`
+                    }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+
+                }
             }
 
         });

@@ -202,8 +202,12 @@ body {
     height: clamp(36vmin, 46vmin, 56vmin);
     object-fit: cover;
     object-position: 100% center;
-    transition-duration: 1s;
+    transition: 0.7s ease-out;
     z-index: 2;
+    -webkit-transition: 0.7s ease-out;
+    -moz-transition: 0.7s ease-out;
+    -ms-transition: 0.7s ease-out;
+    -o-transition: 0.7s ease-out;
 }
 
 .image.maximized {
