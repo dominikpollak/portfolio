@@ -12,22 +12,18 @@ const arrows = document.getElementById('arrows')
 const label = document.querySelector('#img-label')
 
 let mouseMoved = false
-
 const imageWidth = 280
-const DEFAULT_DURATION = 1200;
 
 
 const minimizedImages = () => {
     //triggers when user scrolls the carousel anyhow
     //it minimizes all photos and brings back the counter with the heading
-
     label.innerHTML = '&nbsp;'
     label.classList.remove('active')
-
-    heading.classList.add('active')
-    subheading.classList.add('active')
     arrows.classList.add('active')
     counterWrapper.style.color = 'white'
+    heading.classList.add('active')
+    subheading.classList.add('active')
 
     for (const num of counterNum) {
         num.style.color = 'white'
@@ -84,6 +80,9 @@ window.onmousemove = e => {
 
     if (nextPercentage >= 0) {
         nextPercentage = 0
+    }
+
+    if (nextPercentage >= -1.2) {
         arrowLeft.animate({
             transform: 'scale(0)'
         }, { duration: 1000, fill: 'forwards' })
@@ -96,6 +95,9 @@ window.onmousemove = e => {
 
     if (nextPercentage <= -96.5) {
         nextPercentage = -96.6
+    }
+
+    if (nextPercentage <= -95.2) {
         arrowRight.animate({
             transform: 'scale(0)'
         }, { duration: 1000, fill: 'forwards' })
@@ -147,6 +149,9 @@ window.addEventListener('wheel', (e) => {
 
     if (value >= 0) {
         value = 0
+    }
+
+    if (value >= -1.5) {
         arrowLeft.animate({
             transform: 'scale(0)'
         }, { duration: 1500, fill: 'forwards' })
@@ -160,6 +165,9 @@ window.addEventListener('wheel', (e) => {
 
     if (value <= -96.5) {
         value = -96.6
+    }
+
+    if (value <= - 95.2) {
         arrowRight.animate({
             transform: 'scale(0)'
         }, { duration: 1500, fill: 'forwards' })
@@ -201,44 +209,64 @@ window.onmousedown = e => {
     carousel.dataset.mouseDownAt = e.clientX;
 }
 
-
 if (!mouseMoved) {
 
     for (let i = 0; i < images.length; i++) {
         images[i].addEventListener('mouseup', () => {
 
             if (mouseMoved) return;
-            
-            for (const image of images) {
-                image.classList.remove('maximized')
 
-                image.animate({
-                    objectPosition: `${(-3.8 * (i + 1)) + 100}% 50%`
-                }, { duration: 900, fill: 'forwards' })
+            if (!images[i].classList.contains('maximized')) {
+
+                label.classList.add('active')
+
+                setTimeout(() => {
+                    label.innerText = images[i].dataset.label
+                }, 450)
+
+                arrows.classList.remove('active')
+                heading.classList.remove('active')
+                subheading.classList.remove('active')
+                counterWrapper.style.color = 'transparent'
+                for (const num of counterNum) {
+                    num.style.color = 'transparent'
+                }
+
+                for (const image of images) {
+                    image.classList.remove('maximized')
+
+                    image.animate({
+                        objectPosition: `${(-3.8 * (i + 1)) + 100}% 50%`
+                    }, { duration: 900, fill: 'forwards' })
+                }
+
+                carousel.dataset.percentage = (((imageWidth + 24) * (i + 0.5)) * -1) / 78.876811594203
+
+                carousel.animate({
+                    transform: `translate(${((imageWidth + 24) * (i + 1.25)) * -1}px, -45%)`
+                }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
             }
 
-            label.classList.add('active')
+            images[i].classList.toggle('maximized')
 
-            setTimeout(() => {
-                label.innerText = images[i].dataset.label
-            }, 400)
+            //this happens when image gets minimalized with a click
+            if (!images[i].classList.contains('maximized')) {
 
-            arrows.classList.remove('active')
-            heading.classList.remove('active')
-            subheading.classList.remove('active')
-            counterWrapper.style.color = 'transparent'
-            for (const num of counterNum) {
-                num.style.color = 'transparent'
+                minimizedImages()
+
+                carousel.dataset.percentage = (((imageWidth + 24) * (i + 0.7)) * -1) / 78.876811594203
+
+                counter.animate({
+                    transform: `translateY(${-24.51 * i}px)`
+                }, { duration: 400, delay: 200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" });
+
+                carousel.animate({
+                    transform: `translate(${((imageWidth + 24) * (i)) * -1}px, -45%)`
+                }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+
+
             }
-
-            carousel.dataset.percentage = (((imageWidth + 24) * (i + 0.5)) * -1) / 78.876811594203
-
-            carousel.animate({
-                transform: `translate(${((imageWidth + 24) * (i + 1.25)) * -1}px, -45%)`
-            }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
-
-            images[i].classList.add('maximized')
 
         });
     }
