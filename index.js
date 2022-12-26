@@ -13,13 +13,12 @@ const label = document.querySelector('#img-label')
 
 let mouseMoved = false
 
-const maximizeImage = () => {
-
+const maximizedImage = () => {
+    //maximizes and centers the image, also gets rid of the heading and counter temporarily
     for (let i = 0; i < images.length; i++) {
         images[i].addEventListener('mouseup', () => {
 
             if (mouseMoved) return;
-
 
             for (const image of images) {
                 image.classList.remove('maximized')
@@ -40,7 +39,7 @@ const maximizeImage = () => {
             heading.classList.remove('active')
             subheading.classList.remove('active')
             counterWrapper.style.color = 'transparent'
-            
+
             for (const num of counterNum) {
                 num.style.color = 'transparent'
             }
@@ -52,11 +51,30 @@ const maximizeImage = () => {
             }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
             images[i].classList.add('maximized')
-
         });
-
     }
 }
+
+const minimizedImages = () => {
+    //triggers when user scrolls the carousel anyhow
+    //it minimizes all photos and brings back the counter with the heading
+
+    label.innerHTML = '&nbsp;'
+    label.classList.remove('active')
+
+    heading.classList.add('active')
+    subheading.classList.add('active')
+    arrows.classList.add('active')
+    counterWrapper.style.color = 'white'
+
+    for (const num of counterNum) {
+        num.style.color = 'white'
+    }
+    for (const img of images) {
+        img.classList.remove('maximized')
+    }
+}
+
 
 window.onload = function () {
 
@@ -97,19 +115,7 @@ window.onmousemove = e => {
 
     mouseMoved = true
 
-    label.innerHTML = '&nbsp;'
-    label.classList.remove('active')
-
-    heading.classList.add('active')
-    subheading.classList.add('active')
-    arrows.classList.add('active')
-    carousel.classList.remove('minimized')
-    counterWrapper.style.color = 'white'
-
-    for (const num of counterNum) {
-        num.style.color = 'white'
-    }
-
+    minimizedImages()
 
     const mouseDelta = parseFloat(carousel.dataset.mouseDownAt) - e.clientX,
         maxDelta = window.innerWidth / 0.7
@@ -158,43 +164,17 @@ window.onmousemove = e => {
         transform: `translate(${nextPercentage}%, -45%)`
     }, { duration: 3000, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
-    for (const img of images) {
-        img.classList.remove('maximized')
-
-        img.animate({
-            objectPosition: `${nextPercentage + 100}% 50%`
-        }, { duration: 2200, fill: 'forwards' })
-
-    }
-
-
 }
 
 //pomaly scroll na kolecku 
 window.addEventListener('wheel', (e) => {
 
-    // let isTrackpad = false
-    heading.classList.add('active')
-    subheading.classList.add('active')
-    arrows.classList.add('active')
-    label.innerHTML = '&nbsp;'
-    label.classList.remove('active')
-    carousel.classList.remove('minimized')
-    counterWrapper.style.color = 'white'
-
-    for (const num of counterNum) {
-        num.style.color = 'white'
-    }
-
-    for (const img of images) {
-        img.classList.remove('maximized')
-        img.classList.remove('minimized')
-    }
+    minimizedImages()
 
     let prevValue = parseFloat(carousel.dataset.prevPercentage)
     let value = prevValue
 
-    value += e.deltaY / 30 
+    value += e.deltaY / 30
 
 
     if (value >= 0) {
@@ -256,7 +236,7 @@ window.addEventListener('wheel', (e) => {
 window.onmousedown = e => {
 
     if (!mouseMoved) {
-        maximizeImage()
+        maximizedImage()
     }
 
     mouseMoved = false
