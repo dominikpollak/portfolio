@@ -202,7 +202,7 @@ body {
     height: clamp(36vmin, 46vmin, 56vmin);
     object-fit: cover;
     object-position: 100% center;
-    transition-duration: 1.2s;
+    transition-duration: 1s;
     z-index: 2;
 }
 
@@ -239,7 +239,7 @@ body {
 #carousel {
     display: flex;
     position: absolute;
-    gap: 3vmin;
+    gap: 24px;
     top: 50%;
     left: -1000%;
     transform: translateY(15%);
@@ -248,17 +248,3 @@ body {
     -ms-transform: scale(0.1);
     -o-transform: scale(0.1);
 }
-
-/* #carousel.minimized{
-    gap: 3px;
-    position: absolute;
-    left: 50%;
-    right: -50%;
-    transform: translateX(-50%);
-    top: 90%;
-    bottom: 10%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-} */

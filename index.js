@@ -13,47 +13,8 @@ const label = document.querySelector('#img-label')
 
 let mouseMoved = false
 
-const maximizedImage = () => {
-    //maximizes and centers the image, also gets rid of the heading and counter temporarily
-    for (let i = 0; i < images.length; i++) {
-        images[i].addEventListener('mouseup', () => {
+const imageWidth = 280
 
-            if (mouseMoved) return;
-
-            for (const image of images) {
-                image.classList.remove('maximized')
-
-                image.animate({
-                    objectPosition: `${(-3.8 * (i + 1)) + 100}% 50%`
-                }, { duration: 900, fill: 'forwards' })
-
-            }
-
-            label.classList.add('active')
-
-            setTimeout(() => {
-                label.innerText = images[i].dataset.label
-            }, 350)
-
-            arrows.classList.remove('active')
-            heading.classList.remove('active')
-            subheading.classList.remove('active')
-            counterWrapper.style.color = 'transparent'
-
-            for (const num of counterNum) {
-                num.style.color = 'transparent'
-            }
-
-            carousel.dataset.percentage = -3.8 * (i + 1)
-
-            carousel.animate({
-                transform: `translate(${-304.92 * (i + 1.25)}px, -45%)`
-            }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
-
-            images[i].classList.add('maximized')
-        });
-    }
-}
 
 const minimizedImages = () => {
     //triggers when user scrolls the carousel anyhow
@@ -104,10 +65,7 @@ window.onload = function () {
     arrowLeft.animate({
         transform: 'scale(0)'
     }, { duration: 1500, fill: 'forwards' })
-
 }
-
-
 
 window.onmousemove = e => {
 
@@ -149,7 +107,10 @@ window.onmousemove = e => {
 
     //number counter logic
     for (let i = 0; i < counterNum.length; i++) {
-
+        //
+        //
+        //
+        //
         if ((nextPercentage - 1.8) * -1 < 4.025 + i * 4.025) {
             counter.animate({
                 transform: `translateY(${-24.51 * i}px)`
@@ -166,16 +127,15 @@ window.onmousemove = e => {
 
 }
 
-//pomaly scroll na kolecku 
+
 window.addEventListener('wheel', (e) => {
 
     minimizedImages()
 
-    let prevValue = parseFloat(carousel.dataset.prevPercentage)
-    let value = prevValue
+    let value = parseFloat(carousel.dataset.prevPercentage)
 
-    value += e.deltaY / 30
-
+    //horizontal and vertical scrolling
+    value += e.deltaY / 30 + (e.deltaX * -1) / 30
 
     if (value >= 0) {
         value = 0
@@ -183,7 +143,6 @@ window.addEventListener('wheel', (e) => {
             transform: 'scale(0)'
         }, { duration: 1500, fill: 'forwards' })
     }
-
 
     else {
         arrowLeft.animate({
@@ -228,18 +187,54 @@ window.addEventListener('wheel', (e) => {
         }, { duration: 900, fill: 'forwards' })
 
     }
-
 });
-
-
 
 window.onmousedown = e => {
 
     if (!mouseMoved) {
-        maximizedImage()
-    }
+        //maximizes and centers the image, also gets rid of the heading and counter temporarily
+        for (let i = 0; i < images.length; i++) {
+            images[i].addEventListener('mouseup', () => {
+                console.log(i)
+                if (mouseMoved) return;
 
-    mouseMoved = false
+                for (const image of images) {
+                    image.classList.remove('maximized')
+
+                    image.animate({
+                        objectPosition: `${(-3.8 * (i + 1)) + 100}% 50%`
+                    }, { duration: 900, fill: 'forwards' })
+
+                }
+
+                label.classList.add('active')
+
+                setTimeout(() => {
+                    label.innerText = images[i].dataset.label
+                }, 450)
+
+                arrows.classList.remove('active')
+                heading.classList.remove('active')
+                subheading.classList.remove('active')
+                counterWrapper.style.color = 'transparent'
+
+                for (const num of counterNum) {
+                    num.style.color = 'transparent'
+                }
+
+                // carousel.dataset.percentage = -3.71538461538 * (i + 1)
+                carousel.dataset.percentage = (((imageWidth + 24) * (i+0.5)) * -1) / 78.876811594203
+
+                console.log(imageWidth)
+
+                carousel.animate({
+                    transform: `translate(${((imageWidth + 24) * (i + 1.25)) * -1}px, -45%)`
+                }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+
+                images[i].classList.add('maximized')
+            });
+        }
+    }
     carousel.dataset.mouseDownAt = e.clientX;
 }
 
