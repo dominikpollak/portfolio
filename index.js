@@ -14,6 +14,7 @@ const label = document.querySelector('#img-label')
 let mouseMoved = false
 
 const imageWidth = 280
+const DEFAULT_DURATION = 1200;
 
 
 const minimizedImages = () => {
@@ -121,6 +122,13 @@ window.onmousemove = e => {
 
     carousel.dataset.percentage = nextPercentage
 
+    for (const img of images) {
+        img.animate({
+            objectPosition: `${nextPercentage + 100}% 50%`
+        }, { duration: 900, fill: 'forwards' })
+
+    }
+
     carousel.animate({
         transform: `translate(${nextPercentage}%, -45%)`
     }, { duration: 3000, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
@@ -181,7 +189,7 @@ window.addEventListener('wheel', (e) => {
         transform: `translate(${value}%, -45%)`
     }, { duration: 3000, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
-    for (const img of carousel.getElementsByClassName("image")) {
+    for (const img of images) {
         img.animate({
             objectPosition: `${value + 100}% 50%`
         }, { duration: 900, fill: 'forwards' })
@@ -190,60 +198,57 @@ window.addEventListener('wheel', (e) => {
 });
 
 window.onmousedown = e => {
-
-    if (!mouseMoved) {
-        //maximizes and centers the image, also gets rid of the heading and counter temporarily
-        for (let i = 0; i < images.length; i++) {
-            images[i].addEventListener('mouseup', () => {
-                console.log(i)
-                if (mouseMoved) return;
-
-                for (const image of images) {
-                    image.classList.remove('maximized')
-
-                    image.animate({
-                        objectPosition: `${(-3.8 * (i + 1)) + 100}% 50%`
-                    }, { duration: 900, fill: 'forwards' })
-
-                }
-
-                label.classList.add('active')
-
-                setTimeout(() => {
-                    label.innerText = images[i].dataset.label
-                }, 450)
-
-                arrows.classList.remove('active')
-                heading.classList.remove('active')
-                subheading.classList.remove('active')
-                counterWrapper.style.color = 'transparent'
-
-                for (const num of counterNum) {
-                    num.style.color = 'transparent'
-                }
-
-                // carousel.dataset.percentage = -3.71538461538 * (i + 1)
-                carousel.dataset.percentage = (((imageWidth + 24) * (i+0.5)) * -1) / 78.876811594203
-
-                console.log(imageWidth)
-
-                carousel.animate({
-                    transform: `translate(${((imageWidth + 24) * (i + 1.25)) * -1}px, -45%)`
-                }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
-
-                images[i].classList.add('maximized')
-            });
-        }
-    }
     carousel.dataset.mouseDownAt = e.clientX;
+}
+
+
+if (!mouseMoved) {
+
+    for (let i = 0; i < images.length; i++) {
+        images[i].addEventListener('mouseup', () => {
+
+            if (mouseMoved) return;
+            
+            for (const image of images) {
+                image.classList.remove('maximized')
+
+                image.animate({
+                    objectPosition: `${(-3.8 * (i + 1)) + 100}% 50%`
+                }, { duration: 900, fill: 'forwards' })
+
+            }
+
+            label.classList.add('active')
+
+            setTimeout(() => {
+                label.innerText = images[i].dataset.label
+            }, 400)
+
+            arrows.classList.remove('active')
+            heading.classList.remove('active')
+            subheading.classList.remove('active')
+            counterWrapper.style.color = 'transparent'
+            for (const num of counterNum) {
+                num.style.color = 'transparent'
+            }
+
+            carousel.dataset.percentage = (((imageWidth + 24) * (i + 0.5)) * -1) / 78.876811594203
+
+            carousel.animate({
+                transform: `translate(${((imageWidth + 24) * (i + 1.25)) * -1}px, -45%)`
+            }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+
+            images[i].classList.add('maximized')
+
+        });
+    }
 }
 
 window.onmouseup = e => {
 
-    mouseMoved = false
-
     carousel.dataset.mouseDownAt = '0';
     carousel.dataset.prevPercentage = carousel.dataset.percentage;
+    mouseMoved = false
 
 };
 

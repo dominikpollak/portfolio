@@ -209,8 +209,8 @@ body {
 .image.maximized {
     transition-duration: 1s;
     transition: ease-out;
-    height: 85vh;
-    width: auto;
+    height: auto;
+    width: 70vw;
     object-fit: contain;
     z-index: 4;
     -webkit-transition: 1s;
@@ -243,8 +243,13 @@ body {
     top: 50%;
     left: -1000%;
     transform: translateY(15%);
-    -webkit-transform: scale(0.1);
-    -moz-transform: scale(0.1);
-    -ms-transform: scale(0.1);
-    -o-transform: scale(0.1);
+    -webkit-transform: translateY(15%);
+    -moz-transform: translateY(15%);
+    -ms-transform: translateY(15%);
+    -o-transform: translateY(15%);
+    /* transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s; */
 }
