@@ -209,8 +209,8 @@ body {
 .image.maximized {
     transition-duration: 1s;
     transition: ease-out;
-    height: auto;
-    width: 70vw;
+    height: 85vh;
+    width: auto;
     object-fit: contain;
     z-index: 4;
     -webkit-transition: 1s;
