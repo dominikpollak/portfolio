@@ -92,6 +92,7 @@ body {
     top: 7px;
     left: 50%;
     transform: translateX(-50%);
+    font-family: 'Chivo Mono', monospace;
     color: white;
     border-radius: 0;
     width: 700px;
@@ -169,13 +170,14 @@ body {
     padding: 0;
     margin: 0;
     position: absolute;
+    text-align: center;
     top: 0;
     left: 0;
-    transform: translateY(-612.5px);
-    -webkit-transform: translateY(-612.5px);
-    -moz-transform: translateY(-612.5px);
-    -ms-transform: translateY(-612.5px);
-    -o-transform: translateY(-612.5px);
+    transform: translateY(-96%);
+    -webkit-transform: translateY(-96%);
+    -moz-transform: translateY(-96%);
+    -ms-transform: translateY(-96%);
+    -o-transform: translateY(-96%);
 }
 
 #dash {

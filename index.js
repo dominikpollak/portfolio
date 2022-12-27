@@ -42,8 +42,8 @@ window.onload = function () {
 
 
     carousel.animate({
-        transform: `translateY(-45%)`,
-        left: '42%',
+        transform: `translateY(-46%)`,
+        left: '40%',
     }, { duration: 2500, fill: 'forwards', easing: "cubic-bezier(0.25, 0.1, 0.25, 1)" })
 
     counterWrapper.style.color = 'white'
@@ -108,15 +108,13 @@ window.onmousemove = e => {
         }, { duration: 1000, fill: 'forwards' })
     }
 
+    
     //number counter logic
     for (let i = 0; i < counterNum.length; i++) {
-        //
-        //
-        //
-        //
+
         if ((nextPercentage - 1.8) * -1 < 4.025 + i * 4.025) {
             counter.animate({
-                transform: `translateY(${-24.51 * i}px)`
+                transform: `translateY(${-4 * i}%)`
             }, { duration: 1300, delay: 400, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" });
             break;
         }
@@ -184,7 +182,7 @@ window.addEventListener('wheel', (e) => {
 
         if ((value - 1.8) * -1 < 4.025 + i * 4.025) {
             counter.animate({
-                transform: `translateY(${-24.51 * i}px)`
+                transform: `translateY(${-4 * i}%)`
             }, { duration: 1300, delay: 400, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" });
             break;
         }
