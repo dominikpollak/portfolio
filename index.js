@@ -108,7 +108,7 @@ window.onmousemove = e => {
         }, { duration: 1000, fill: 'forwards' })
     }
 
-    
+
     //number counter logic
     for (let i = 0; i < counterNum.length; i++) {
 
@@ -134,6 +134,139 @@ window.onmousemove = e => {
     }, { duration: 3000, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
 
 }
+
+document.addEventListener('keyup', e => {
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+
+        minimizedImages()
+        let value = parseFloat(carousel.dataset.prevPercentage)
+        value -= 4.02
+
+    if (value >= 0) {
+        value = 0
+    }
+
+    if (value >= -1.5) {
+        arrowLeft.animate({
+            transform: 'scale(0)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+
+    else {
+        arrowLeft.animate({
+            transform: 'scale(1)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+
+    if (value <= -96.5) {
+        value = -96.6
+    }
+
+    if (value <= - 95.2) {
+        arrowRight.animate({
+            transform: 'scale(0)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+
+    else {
+        arrowRight.animate({
+            transform: 'scale(1)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+
+    //number counter logic
+    for (let i = 0; i < counterNum.length; i++) {
+
+        if ((value - 1.8) * -1 < 4.025 + i * 4.025) {
+            counter.animate({
+                transform: `translateY(${-4 * i}%)`
+            }, { duration: 900, delay: 400, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" });
+            break;
+        }
+    }
+
+        carousel.dataset.prevPercentage = value;
+
+        for (const img of images) {
+            img.animate({
+                objectPosition: `${value + 100}% 50%`
+            }, { duration: 900, fill: 'forwards' })
+    
+        }
+
+        carousel.animate({
+            transform: `translate(${value}%, -45%)`
+        }, { duration: 900, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+
+
+    }
+
+    else if (e.key === 'ArrowLeft' || e.key==='ArrowDown') {
+        
+        minimizedImages()
+        let value = parseFloat(carousel.dataset.prevPercentage)
+        value += 4.02
+
+    if (value >= 0) {
+        value = 0
+    }
+
+    if (value >= -1.5) {
+        arrowLeft.animate({
+            transform: 'scale(0)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+
+    else {
+        arrowLeft.animate({
+            transform: 'scale(1)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+
+    if (value <= -96.5) {
+        value = -96.6
+    }
+
+    if (value <= - 95.2) {
+        arrowRight.animate({
+            transform: 'scale(0)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+
+    else {
+        arrowRight.animate({
+            transform: 'scale(1)'
+        }, { duration: 1500, fill: 'forwards' })
+    }
+
+    //number counter logic
+    for (let i = 0; i < counterNum.length; i++) {
+
+        if ((value - 1.8) * -1 < 4.025 + i * 4.025) {
+            counter.animate({
+                transform: `translateY(${-4 * i}%)`
+            }, { duration: 900, delay: 400, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" });
+            break;
+        }
+    }
+
+        carousel.dataset.prevPercentage = value;
+
+        for (const img of images) {
+            img.animate({
+                objectPosition: `${value + 100}% 50%`
+            }, { duration: 900, fill: 'forwards' })
+    
+        }
+
+        carousel.animate({
+            transform: `translate(${value}%, -45%)`
+        }, { duration: 900, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
+
+
+    }
+})
 
 
 window.addEventListener('wheel', (e) => {
@@ -241,9 +374,9 @@ if (!mouseMoved) {
                 carousel.dataset.percentage = (((imageWidth + 24) * (i + 0.5)) * -1) / 78.876811594203
                 console.log(innerWidth)
                 carousel.animate({
-                    transform: `translate(${((imageWidth + 24) * (i + (innerWidth/1180.32786885 ))) * -1}px, -45%)`
+                    transform: `translate(${((imageWidth + 24) * (i + (innerWidth / 1180.32786885))) * -1}px, -45%)`
                 }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
-                }
+            }
 
             images[i].classList.toggle('maximized')
 
@@ -264,7 +397,7 @@ if (!mouseMoved) {
                     images[i + 1].classList.add('maximized')
                 }
 
-                else{
+                else {
                     carousel.dataset.percentage = (((imageWidth + 24) * (i + 0.7)) * -1) / 78.876811594203
 
                     carousel.animate({

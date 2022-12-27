@@ -36,13 +36,13 @@ body {
     -o-transition: font-size 0.9s ease-out;
 }
 
-#subheading{
+#subheading {
     color: white;
     text-align: center;
     font-size: 0;
 }
 
-#subheading.active{
+#subheading.active {
     color: white;
     transition: font-size 1s ease-out;
     font-size: 0.9rem;
@@ -53,13 +53,13 @@ body {
     -o-transition: font-size 1s ease-out;
 }
 
-#label-wrapper{
+#label-wrapper {
     display: flex;
     align-items: center;
     margin: 0 11px 0px 8px;
 }
 
-#heading #img-label{
+#heading #img-label {
     all: initial;
     color: transparent;
     position: relative;
@@ -69,14 +69,14 @@ body {
     z-index: 5;
     transition: 0.8s;
     background: rgba(24, 24, 24, 0);
-    /* background: white; */
     -webkit-border-radius: 46%;
     -moz-border-radius: 46%;
     -ms-border-radius: 46%;
     -o-border-radius: 46%;
-    
+
 }
-#heading #img-label.ready{
+
+#heading #img-label.ready {
     border: 3.6px solid white;
     width: 18px;
     height: 24px;
@@ -115,7 +115,7 @@ body {
 }
 
 
-#arrows{
+#arrows {
     position: absolute;
     color: white;
     top: 7rem;
@@ -128,7 +128,8 @@ body {
     -ms-transition: 0.8s ease-out;
     -o-transition: 0.8s ease-out;
 }
-#arrows.active{
+
+#arrows.active {
     transition: font-size 1s ease-out;
     font-size: 4.5em;
     -webkit-transition: font-size 1s ease-out;
@@ -212,23 +213,23 @@ body {
     -o-transition: 0.7s ease-out;
 }
 
-    .image.maximized {
-        transition-duration: 1s;
-        transition: ease-out;
-        height: auto;
-        width: 70vw;
-        object-fit: contain;
-        z-index: 4;
-        -webkit-transition: 1s;
-        -moz-transition: 1s;
-        -ms-transition: 1s;
-        -o-transition: 1s;
-        transform: translateY(2%);
-        -webkit-transform: translateY(2%);
-        -moz-transform: translateY(2%);
-        -ms-transform: translateY(2%);
-        -o-transform: translateY(2%);
-    }
+.image.maximized {
+    transition-duration: 1s;
+    transition: ease-out;
+    height: auto;
+    width: 70vw;
+    object-fit: contain;
+    z-index: 4;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transform: translateY(2%);
+    -webkit-transform: translateY(2%);
+    -moz-transform: translateY(2%);
+    -ms-transform: translateY(2%);
+    -o-transform: translateY(2%);
+}
 
 .image:hover {
     filter: brightness(50%);
