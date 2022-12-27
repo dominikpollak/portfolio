@@ -212,24 +212,23 @@ body {
     -o-transition: 0.7s ease-out;
 }
 
-.image.maximized {
-    transition-duration: 1s;
-    transition: ease-out;
-    height: auto;
-    width: 70vw;
-    object-fit: contain;
-    z-index: 4;
-    -webkit-transition: 1s;
-    -moz-transition: 1s;
-    -ms-transition: 1s;
-    -o-transition: 1s;
-    transform: translateY(2%);
-    -webkit-transform: translateY(2%);
-    -moz-transform: translateY(2%);
-    -ms-transform: translateY(2%);
-    -o-transform: translateY(2%);
-}
-
+    .image.maximized {
+        transition-duration: 1s;
+        transition: ease-out;
+        height: auto;
+        width: 70vw;
+        object-fit: contain;
+        z-index: 4;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+        transform: translateY(2%);
+        -webkit-transform: translateY(2%);
+        -moz-transform: translateY(2%);
+        -ms-transform: translateY(2%);
+        -o-transform: translateY(2%);
+    }
 
 .image:hover {
     filter: brightness(50%);

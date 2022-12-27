@@ -6,6 +6,7 @@ const heading = document.getElementById('heading')
 const subheading = document.getElementById('subheading')
 const images = document.querySelectorAll('.image')
 const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+// const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 const arrowRight = document.getElementById('arrow-right')
 const arrowLeft = document.getElementById('arrow-left')
 const arrows = document.getElementById('arrows')
@@ -13,7 +14,6 @@ const label = document.querySelector('#img-label')
 
 let mouseMoved = false
 const imageWidth = 280
-
 
 const minimizedImages = () => {
     //triggers when user scrolls the carousel anyhow
@@ -239,12 +239,11 @@ if (!mouseMoved) {
                 }
 
                 carousel.dataset.percentage = (((imageWidth + 24) * (i + 0.5)) * -1) / 78.876811594203
-
+                console.log(innerWidth)
                 carousel.animate({
-                    transform: `translate(${((imageWidth + 24) * (i + 1.25)) * -1}px, -45%)`
+                    transform: `translate(${((imageWidth + 24) * (i + (innerWidth/1180.32786885 ))) * -1}px, -45%)`
                 }, { duration: 1200, fill: 'forwards', easing: "cubic-bezier(0, 0, 0.58, 1)" })
-
-            }
+                }
 
             images[i].classList.toggle('maximized')
 
