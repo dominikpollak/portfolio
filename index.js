@@ -35,10 +35,6 @@ function minimizedImages() {
 
 function leftArrowAnimation(value) {
    //make left arrow disappear when user scrolls to the right
-   if (value >= 0) {
-      value = 0;
-   }
-
    if (value >= -1.5) {
       gsap.to(arrowLeft, {
          scale: 0,
@@ -54,10 +50,6 @@ function leftArrowAnimation(value) {
 
 function rightArrowAnimation(value) {
    //make right arrow disappear when user scrolls to the right
-   if (value <= -96.5) {
-      value = -96.6;
-   }
-
    if (value <= -95.2) {
       gsap.to(arrowRight, {
          scale: 0,
@@ -119,35 +111,13 @@ window.onmousemove = (e) => {
       nextPercentage = 0;
    }
 
-   //make left arrow disappear when user scrolls to the left
-   if (nextPercentage >= -1.2) {
-      gsap.to(arrowLeft, {
-         scale: 0,
-         duration: 1,
-      });
-   } else {
-      gsap.to(arrowLeft, {
-         scale: 1,
-         duration: 1,
-      });
-   }
+   leftArrowAnimation(nextPercentage);
 
-   //make right arrow disappear when user scrolls to the right
    if (nextPercentage <= -96.5) {
       nextPercentage = -96.6;
    }
 
-   if (nextPercentage <= -95.2) {
-      gsap.to(arrowRight, {
-         scale: 0,
-         duration: 1,
-      });
-   } else {
-      gsap.to(arrowRight, {
-         scale: 1,
-         duration: 1,
-      });
-   }
+   rightArrowAnimation(nextPercentage);
 
    //number counter logic
    for (let i = 0; i < counterNum.length; i++) {
@@ -189,37 +159,13 @@ document.addEventListener('keyup', (e) => {
          value = 0;
       }
 
-      if (value >= -1.5) {
-         gsap.to(arrowLeft, {
-            scale: 0,
-            duration: 1,
-         });
-      } else {
-         arrowLeft.animate({
-            scale: 0,
-            duration: 1,
-         });
-      }
+      leftArrowAnimation(value);
 
       if (value <= -96.5) {
          value = -96.6;
       }
 
-      if (value <= -95.2) {
-         arrowRight.animate(
-            {
-               transform: 'scale(0)',
-            },
-            { duration: 1500, fill: 'forwards' }
-         );
-      } else {
-         arrowRight.animate(
-            {
-               transform: 'scale(1)',
-            },
-            { duration: 1500, fill: 'forwards' }
-         );
-      }
+      rightArrowAnimation(value);
 
       //number counter logic
       for (let i = 0; i < counterNum.length; i++) {
@@ -265,41 +211,13 @@ document.addEventListener('keyup', (e) => {
          value = 0;
       }
 
-      if (value >= -1.5) {
-         arrowLeft.animate(
-            {
-               transform: 'scale(0)',
-            },
-            { duration: 1500, fill: 'forwards' }
-         );
-      } else {
-         arrowLeft.animate(
-            {
-               transform: 'scale(1)',
-            },
-            { duration: 1500, fill: 'forwards' }
-         );
-      }
+      leftArrowAnimation(value);
 
       if (value <= -96.5) {
          value = -96.6;
       }
 
-      if (value <= -95.2) {
-         arrowRight.animate(
-            {
-               transform: 'scale(0)',
-            },
-            { duration: 1500, fill: 'forwards' }
-         );
-      } else {
-         arrowRight.animate(
-            {
-               transform: 'scale(1)',
-            },
-            { duration: 1500, fill: 'forwards' }
-         );
-      }
+      rightArrowAnimation(value);
 
       //number counter logic
       for (let i = 0; i < counterNum.length; i++) {
@@ -351,33 +269,13 @@ window.addEventListener('wheel', (e) => {
       value = 0;
    }
 
-   if (value >= -1.5) {
-      gsap.to(arrowLeft, {
-         scale: 0,
-         duration: 1,
-      });
-   } else {
-      gsap.to(arrowLeft, {
-         scale: 1,
-         duration: 1,
-      });
-   }
+   leftArrowAnimation(value);
 
    if (value <= -96.5) {
       value = -96.6;
    }
 
-   if (value <= -95.2) {
-      gsap.to(arrowRight, {
-         scale: 0,
-         duration: 1,
-      });
-   } else {
-      gsap.to(arrowRight, {
-         scale: 1,
-         duration: 1,
-      });
-   }
+   rightArrowAnimation(value);
 
    //number counter logic
    for (let i = 0; i < counterNum.length; i++) {
