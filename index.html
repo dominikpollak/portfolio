@@ -1,266 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@100&display=swap"
-      rel="stylesheet"
-    />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="/index.css" />
-    <script src="pace.js"></script>
-    <link rel="stylesheet" href="pace-theme-center-simple.css" />
-  </head>
+   <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@100&display=swap"
+         rel="stylesheet"
+      />
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Portfolio</title>
+      <link rel="stylesheet" href="/index.css" />
+      <script src="pace.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/EasePack.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/CustomEase.min.js"></script>
+      <link rel="stylesheet" href="pace-theme-center-simple.css" />
+   </head>
 
-  <body>
-    <div id="heading">
-      <div>Portf</div>
-      <div id="label-wrapper">
-        <div id="img-label">&nbsp;</div>
+   <body>
+      <div id="heading">
+         <div>Portf</div>
+         <div id="label-wrapper">
+            <div id="img-label">&nbsp;</div>
+         </div>
+         <div>lio</div>
       </div>
-      <div>lio</div>
-    </div>
-    <div id="subheading">
-      <h2>Dominik Pollák</h2>
-    </div>
-    <div id="arrows">
-      <span id="arrow-left">◄</span>
-      <span id="arrow-right">►</span>
-    </div>
-
-    <div id="carousel" data-mouse-down-at="0" data-prev-percentage="0">
-      <img
-        class="image"
-        data-index="4"
-        data-label="Monotypy"
-        draggable="false"
-        src="/pictures/1.jpg"
-        alt="monotypy"
-      />
-      <img
-        class="image"
-        data-index="5"
-        data-label="Autoportréty - akryl(1/2)"
-        draggable="false"
-        alt="autoportréty 1"
-        src="/pictures/2.jpg"
-      />
-      <img
-        class="image"
-        data-index="6"
-        data-label="Autoportréty - akryl(2/2)"
-        draggable="false"
-        src="/pictures/3.jpg"
-        alt="autoportréty 2"
-      />
-      <img
-        class="image"
-        data-index="1"
-        data-label="Linoryt"
-        draggable="false"
-        src="/pictures/4.jpg"
-        alt="linoryt"
-      />
-      <img
-        class="image"
-        data-index="2"
-        data-label="Digitální ilustrace (1/3)"
-        draggable="false"
-        src="/pictures/5.jpg"
-        alt="digitální ilustrace 1"
-      />
-      <img
-        class="image"
-        data-index="3"
-        data-label="Digitální ilustrace (2/3)"
-        draggable="false"
-        src="/pictures/6.jpg"
-        alt="digitální ilustrace 2"
-      />
-      <img
-        class="image"
-        data-index="7"
-        data-label="Digitální ilustrace (3/3)"
-        draggable="false"
-        src="/pictures/7.jpg"
-        alt="digitální ilustrace 3"
-      />
-      <img
-        class="image"
-        data-index="8"
-        data-label="Digitální kresba - Portrét(1/3)"
-        draggable="false"
-        src="/pictures/8.jpg"
-        alt="digitální kresba - portrét 1"
-      />
-      <img
-        class="image"
-        data-index="9"
-        data-label="Digitální kresba - Portrét(2/3)"
-        draggable="false"
-        src="/pictures/9.jpg"
-        alt="digitální kresba - portrét 2"
-      />
-      <img
-        class="image"
-        data-index="10"
-        data-label="Digitální kresba - Portrét(3/3)"
-        draggable="false"
-        src="/pictures/10.jpg"
-        alt="digitální kresba - portrét 3"
-      />
-      <img
-        class="image"
-        data-index="11"
-        data-label="Grafický design plakátu"
-        draggable="false"
-        src="/pictures/11.jpg"
-        alt="Design plakátu"
-      />
-      <img
-        class="image"
-        data-index="12"
-        data-label="Design loga"
-        draggable="false"
-        src="/pictures/12.jpg"
-        alt="Design loga"
-      />
-      <img
-        class="image"
-        data-index="13"
-        data-label="Komiks - str. 21, 27"
-        draggable="false"
-        src="/pictures/13.jpg"
-        alt="Komiks 1"
-      />
-      <img
-        class="image"
-        data-index="14"
-        data-label="Komiks - str. 43, 50"
-        draggable="false"
-        src="/pictures/14.jpg"
-        alt="Komiks 2"
-      />
-      <img
-        class="image"
-        data-index="15"
-        data-label="Portrét - tužka"
-        draggable="false"
-        src="/pictures/15.jpg"
-        alt="portrét - tužka"
-      />
-      <img
-        class="image"
-        data-index="16"
-        data-label="Akrylová malba - plátno, sololit"
-        draggable="false"
-        src="/pictures/16.jpg"
-        alt="Akrylová malba - plátno, sololit"
-      />
-      <img
-        class="image"
-        data-index="17"
-        data-label="Design coveru e-knihy"
-        draggable="false"
-        src="/pictures/17.jpg"
-        alt="Design coveru e-knihy"
-      />
-      <img
-        class="image"
-        data-index="18"
-        data-label="Akrylová malba - Noční můra (1/2)"
-        draggable="false"
-        src="/pictures/18.jpg"
-        alt="Akrylová malba - Noční můra (1/2)"
-      />
-      <img
-        class="image"
-        data-index="19"
-        data-label="Akrylová malba - Noční můra (2/2)"
-        draggable="false"
-        src="/pictures/19.jpg"
-        alt="Akrylová malba - Noční můra (2/2)"
-      />
-      <img
-        class="image"
-        data-index="20"
-        draggable="false"
-        src="/pictures/1.jpg"
-        alt="dog"
-      />
-      <img
-        class="image"
-        data-index="21"
-        draggable="false"
-        src="/pictures/2.jpg"
-        alt="dog"
-      />
-      <img
-        class="image"
-        data-index="22"
-        draggable="false"
-        src="/pictures/3.jpg"
-        alt="dog"
-      />
-      <img
-        class="image"
-        data-index="23"
-        draggable="false"
-        src="/pictures/2.jpg"
-        alt="dog"
-      />
-      <img
-        class="image"
-        data-index="24"
-        draggable="false"
-        src="/pictures/3.jpg"
-        alt="dog"
-      />
-      <img
-        class="image"
-        data-index="25"
-        draggable="false"
-        src="/pictures/4.jpg"
-        alt="dog"
-      />
-    </div>
-    <div id="counter-wrapper">
-      <div id="counter">
-        <!-- <span id="counterNum">1</span><span>/25</span> -->
-        <div class="counterNum">1</div>
-        <div class="counterNum">2</div>
-        <div class="counterNum">3</div>
-        <div class="counterNum">4</div>
-        <div class="counterNum">5</div>
-        <div class="counterNum">6</div>
-        <div class="counterNum">7</div>
-        <div class="counterNum">8</div>
-        <div class="counterNum">9</div>
-        <div class="counterNum">10</div>
-        <div class="counterNum">11</div>
-        <div class="counterNum">12</div>
-        <div class="counterNum">13</div>
-        <div class="counterNum">14</div>
-        <div class="counterNum">15</div>
-        <div class="counterNum">16</div>
-        <div class="counterNum">17</div>
-        <div class="counterNum">18</div>
-        <div class="counterNum">19</div>
-        <div class="counterNum">20</div>
-        <div class="counterNum">21</div>
-        <div class="counterNum">22</div>
-        <div class="counterNum">23</div>
-        <div class="counterNum">24</div>
-        <div class="counterNum">25</div>
+      <div id="subheading">
+         <h2>Dominik Pollák</h2>
       </div>
-      <div id="dash">—</div>
-      <div id="counter2">25</div>
-    </div>
+      <div id="arrows">
+         <span id="arrow-left">◄</span>
+         <span id="arrow-right">►</span>
+      </div>
 
-    <script src="/index.js"></script>
-  </body>
+      <div id="carousel" data-mouse-down-at="0" data-prev-percentage="0">
+         <img
+            class="image"
+            data-index="4"
+            data-label="Monotypy"
+            draggable="false"
+            src="/pictures/1.jpg"
+            alt="monotypy"
+         />
+         <img
+            class="image"
+            data-index="5"
+            data-label="Autoportréty - akryl(1/2)"
+            draggable="false"
+            alt="autoportréty 1"
+            src="/pictures/2.jpg"
+         />
+         <img
+            class="image"
+            data-index="6"
+            data-label="Autoportréty - akryl(2/2)"
+            draggable="false"
+            src="/pictures/3.jpg"
+            alt="autoportréty 2"
+         />
+         <img
+            class="image"
+            data-index="1"
+            data-label="Linoryt"
+            draggable="false"
+            src="/pictures/4.jpg"
+            alt="linoryt"
+         />
+         <img
+            class="image"
+            data-index="2"
+            data-label="Digitální ilustrace (1/3)"
+            draggable="false"
+            src="/pictures/5.jpg"
+            alt="digitální ilustrace 1"
+         />
+         <img
+            class="image"
+            data-index="3"
+            data-label="Digitální ilustrace (2/3)"
+            draggable="false"
+            src="/pictures/6.jpg"
+            alt="digitální ilustrace 2"
+         />
+         <img
+            class="image"
+            data-index="7"
+            data-label="Digitální ilustrace (3/3)"
+            draggable="false"
+            src="/pictures/7.jpg"
+            alt="digitální ilustrace 3"
+         />
+         <img
+            class="image"
+            data-index="8"
+            data-label="Digitální kresba - Portrét(1/3)"
+            draggable="false"
+            src="/pictures/8.jpg"
+            alt="digitální kresba - portrét 1"
+         />
+         <img
+            class="image"
+            data-index="9"
+            data-label="Digitální kresba - Portrét(2/3)"
+            draggable="false"
+            src="/pictures/9.jpg"
+            alt="digitální kresba - portrét 2"
+         />
+         <img
+            class="image"
+            data-index="10"
+            data-label="Digitální kresba - Portrét(3/3)"
+            draggable="false"
+            src="/pictures/10.jpg"
+            alt="digitální kresba - portrét 3"
+         />
+         <img
+            class="image"
+            data-index="11"
+            data-label="Grafický design plakátu"
+            draggable="false"
+            src="/pictures/11.jpg"
+            alt="Design plakátu"
+         />
+         <img
+            class="image"
+            data-index="12"
+            data-label="Design loga"
+            draggable="false"
+            src="/pictures/12.jpg"
+            alt="Design loga"
+         />
+         <img
+            class="image"
+            data-index="13"
+            data-label="Komiks - str. 21, 27"
+            draggable="false"
+            src="/pictures/13.jpg"
+            alt="Komiks 1"
+         />
+         <img
+            class="image"
+            data-index="14"
+            data-label="Komiks - str. 43, 50"
+            draggable="false"
+            src="/pictures/14.jpg"
+            alt="Komiks 2"
+         />
+         <img
+            class="image"
+            data-index="15"
+            data-label="Portrét - tužka"
+            draggable="false"
+            src="/pictures/15.jpg"
+            alt="portrét - tužka"
+         />
+         <img
+            class="image"
+            data-index="16"
+            data-label="Akrylová malba - plátno, sololit"
+            draggable="false"
+            src="/pictures/16.jpg"
+            alt="Akrylová malba - plátno, sololit"
+         />
+         <img
+            class="image"
+            data-index="17"
+            data-label="Design coveru e-knihy"
+            draggable="false"
+            src="/pictures/17.jpg"
+            alt="Design coveru e-knihy"
+         />
+         <img
+            class="image"
+            data-index="18"
+            data-label="Akrylová malba - Noční můra (1/2)"
+            draggable="false"
+            src="/pictures/18.jpg"
+            alt="Akrylová malba - Noční můra (1/2)"
+         />
+         <img
+            class="image"
+            data-index="19"
+            data-label="Akrylová malba - Noční můra (2/2)"
+            draggable="false"
+            src="/pictures/19.jpg"
+            alt="Akrylová malba - Noční můra (2/2)"
+         />
+         <img
+            class="image"
+            data-index="20"
+            draggable="false"
+            src="/pictures/1.jpg"
+            alt="dog"
+         />
+         <img
+            class="image"
+            data-index="21"
+            draggable="false"
+            src="/pictures/2.jpg"
+            alt="dog"
+         />
+         <img
+            class="image"
+            data-index="22"
+            draggable="false"
+            src="/pictures/3.jpg"
+            alt="dog"
+         />
+         <img
+            class="image"
+            data-index="23"
+            draggable="false"
+            src="/pictures/2.jpg"
+            alt="dog"
+         />
+         <img
+            class="image"
+            data-index="24"
+            draggable="false"
+            src="/pictures/3.jpg"
+            alt="dog"
+         />
+         <img
+            class="image"
+            data-index="25"
+            draggable="false"
+            src="/pictures/4.jpg"
+            alt="dog"
+         />
+      </div>
+      <div id="counter-wrapper">
+         <div id="counter">
+            <!-- <span id="counterNum">1</span><span>/25</span> -->
+            <div class="counterNum">1</div>
+            <div class="counterNum">2</div>
+            <div class="counterNum">3</div>
+            <div class="counterNum">4</div>
+            <div class="counterNum">5</div>
+            <div class="counterNum">6</div>
+            <div class="counterNum">7</div>
+            <div class="counterNum">8</div>
+            <div class="counterNum">9</div>
+            <div class="counterNum">10</div>
+            <div class="counterNum">11</div>
+            <div class="counterNum">12</div>
+            <div class="counterNum">13</div>
+            <div class="counterNum">14</div>
+            <div class="counterNum">15</div>
+            <div class="counterNum">16</div>
+            <div class="counterNum">17</div>
+            <div class="counterNum">18</div>
+            <div class="counterNum">19</div>
+            <div class="counterNum">20</div>
+            <div class="counterNum">21</div>
+            <div class="counterNum">22</div>
+            <div class="counterNum">23</div>
+            <div class="counterNum">24</div>
+            <div class="counterNum">25</div>
+         </div>
+         <div id="dash">—</div>
+         <div id="counter2">25</div>
+      </div>
+
+      <script src="/index.js"></script>
+   </body>
 </html>

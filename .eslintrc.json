@@ -1,7 +1,7 @@
 {
-  "extends": ["next", "next/core-web-vitals", "eslint:recommended"],
-  "globals": {
-    "React": "readonly"
-  },
-  "rules": {}
+   "extends": ["next", "next/core-web-vitals", "eslint:recommended"],
+   "globals": {
+      "gsap": "readonly"
+   },
+   "rules": {}
 }
