@@ -170,31 +170,22 @@ document.addEventListener('keyup', (e) => {
       //number counter logic
       for (let i = 0; i < counterNum.length; i++) {
          if ((value - 1.8) * -1 < 4.025 + i * 4.025) {
-            counter.animate(
-               {
-                  transform: `translateY(${-4 * i}%)`,
-               },
-               {
-                  duration: 900,
-                  delay: 400,
-                  fill: 'forwards',
-                  ease: 'cubic-bezier(0, 0, 0.58, 1)',
-               }
-            );
+            gsap.to(counter, {
+               transform: `translateY(${-4 * i}%)`,
+               duration: 0.9,
+               delay: 0.3,
+               ease: Power3.easeOut,
+            });
             break;
          }
       }
 
       carousel.dataset.prevPercentage = value;
 
-      for (const img of images) {
-         img.animate(
-            {
-               objectPosition: `${value + 100}% 50%`,
-            },
-            { duration: 900, fill: 'forwards' }
-         );
-      }
+      gsap.to(images, {
+         objectPosition: `${value + 100}% 50%`,
+         duration: 0.9,
+      });
 
       gsap.to(carousel, {
          transform: `translate(${value}%, -45%)`,
@@ -222,31 +213,22 @@ document.addEventListener('keyup', (e) => {
       //number counter logic
       for (let i = 0; i < counterNum.length; i++) {
          if ((value - 1.8) * -1 < 4.025 + i * 4.025) {
-            counter.animate(
-               {
-                  transform: `translateY(${-4 * i}%)`,
-               },
-               {
-                  duration: 900,
-                  delay: 400,
-                  fill: 'forwards',
-                  ease: 'cubic-bezier(0, 0, 0.58, 1)',
-               }
-            );
+            gsap.to(counter, {
+               transform: `translateY(${-4 * i}%)`,
+               duration: 0.9,
+               delay: 0.4,
+               ease: Power3.easeOut,
+            });
             break;
          }
       }
 
       carousel.dataset.prevPercentage = value;
 
-      for (const img of images) {
-         img.animate(
-            {
-               objectPosition: `${value + 100}% 50%`,
-            },
-            { duration: 900, fill: 'forwards' }
-         );
-      }
+      gsap.to(images, {
+         objectPosition: `${value + 100}% 50%`,
+         duration: 0.9,
+      });
 
       gsap.to(carousel, {
          transform: `translate(${value}%, -45%)`,
@@ -295,7 +277,7 @@ window.addEventListener('wheel', (e) => {
    gsap.to(images, {
       objectPosition: `${value + 100}% 50%`,
       duration: 1,
-      ease: 'cubic-bezier(0, 0, 0.58, 1)',
+      ease: Power3.easeOut,
    });
 
    gsap.to(carousel, {
