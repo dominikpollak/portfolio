@@ -42,7 +42,7 @@ function leftArrowAnimation(value) {
       });
    } else {
       gsap.to(arrowLeft, {
-         scale: 0,
+         scale: 1,
          duration: 1,
       });
    }
