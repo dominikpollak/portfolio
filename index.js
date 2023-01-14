@@ -333,12 +333,6 @@ if (!mouseMoved) {
                image.classList.remove('maximized');
             }
 
-            gsap.to(images, {
-               objectPosition: `${-3.8 * (i + 1) + 100}% 50%`,
-               duration: 1,
-               ease: Power3.easeOut,
-            });
-
             carousel.dataset.percentage =
                ((imageWidth + 24) * (i + 0.5) * -1) / 78.876811594203;
 
@@ -347,7 +341,6 @@ if (!mouseMoved) {
                   (imageWidth + 24) * (i + innerWidth / 1190.08264463) * -1
                }px, -45%)`,
                duration: 2,
-               fill: 'forwards',
                ease: Power3.easeOut,
             });
          }
@@ -369,7 +362,6 @@ if (!mouseMoved) {
                      (imageWidth + 24) * (i + 2.25) * -1
                   }px, -45%)`,
                   duration: 2.5,
-                  fill: 'forwards',
                   ease: Power2.easeOut,
                });
 
@@ -382,7 +374,6 @@ if (!mouseMoved) {
                gsap.to(carousel, {
                   transform: `translate(${(imageWidth + 24) * i * -1}px, -45%)`,
                   duration: 2,
-                  fill: 'forwards',
                   ease: Power2.easeOut,
                });
             }

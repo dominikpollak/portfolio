@@ -228,6 +228,7 @@ body {
    .image.maximized {
       transition-duration: 0.7s;
       transition-timing-function: ease-out;
+      /* transition-property: ; */
       height: auto;
       width: 70vw;
       object-fit: contain;
