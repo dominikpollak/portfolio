@@ -144,7 +144,6 @@ window.onmousemove = (e) => {
       transform: `translate(${nextPercentage}%, -45%)`,
       duration: 2.5,
       ease: Power4.easeOut,
-      delay: 0.05,
    });
 };
 
